@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Riwaayat — Redefining Pakistani Fashion</title>
+  <title>EverStyle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23800000' d='M352 160v-32C352 57.42 294.58 0 224 0S96 57.42 96 128v32H0v272c0 44.18 35.82 80 80 80h288c44.18 0 80-35.82 80-80V160h-96zM224 48c44.11 0 80 35.89 80 80v32H144v-32c0-44.11 35.89-80 80-80z'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -29,9 +30,6 @@
   </div>
   <nav class="navbar">
     <div class="container nav-container">
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
       <a href="index.html" class="logo"><i class="fa-solid fa-bag-shopping"></i> EverStyle</a>
       <ul class="nav-links" id="nav-links">
         <li>
@@ -226,6 +224,9 @@
           <i class="far fa-user"></i>
         </a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
@@ -343,51 +344,78 @@
   </div>
 </section>
 
-<section class="section" id="top-picks">
+<!-- Top Picks for You -->
+<section class="section section-tile">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Handpicked</span>
+      <span class="section-tag">Top Picks</span>
       <h2 class="section-title">Top Picks for You</h2>
       <p class="section-desc">We've handpicked the styles we know you'll love. Explore what's trending now.</p>
     </div>
-    <div class="product-grid" id="bridal-grid"></div>
+  </div>
+  <div class="section-banner">
+    <a href="daily.html">
+      <img src="images/top-picks.jpg" alt="Top Picks">
+    </a>
+  </div>
+  <div class="container">
+    <div class="product-scroll" id="bridal-grid"></div>
   </div>
 </section>
 
-<section class="section">
+<!-- Bestsellers -->
+<section class="section section-tile">
   <div class="container">
     <div class="section-header">
       <span class="section-tag">Bestsellers</span>
       <h2 class="section-title">Bestsellers</h2>
       <p class="section-desc">Discover this season's favorites and refresh your style with looks you'll wear on repeat.</p>
     </div>
+  </div>
+  <div class="section-banner">
+    <a href="daily.html">
+      <img src="images/best-seller.jpg" alt="Bestsellers">
+    </a>
+  </div>
+  <div class="container">
     <div class="product-grid" id="daily-grid"></div>
   </div>
 </section>
 
-<section class="section">
+<!-- 50% Sale -->
+<section class="section section-sale">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Summer '26</span>
-      <h2 class="section-title">Summer Lawn</h2>
-      <p class="section-desc">Light, breathable lawn suits and cotton fabrics to beat the heat in style.</p>
+      <span class="section-tag sale-tag">🔥 50% Off</span>
+      <h2 class="section-title">50% Sale</h2>
+      <p class="section-desc">Limited-time offer — up to 50% off on selected summer lawn and daily wear essentials.</p>
     </div>
-    <div class="product-grid" id="summer-grid"></div>
+    <div class="countdown-bar">
+      <div class="countdown-item">
+        <span class="countdown-num" id="days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="minutes">00</span>
+        <span class="countdown-label">Mins</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" id="seconds">00</span>
+        <span class="countdown-label">Secs</span>
+      </div>
+    </div>
+    <div class="product-grid" id="sale-grid"></div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Cutest Styles</span>
-      <h2 class="section-title">Kids Collection</h2>
-      <p class="section-desc">Adorable Pakistani outfits for your little ones. From festive wear to everyday comfort.</p>
-    </div>
-    <div class="product-grid" id="kids-grid"></div>
-  </div>
-</section>
-
-<section class="trust-bar">
+<section class="trust-bar category-trust">
   <div class="container">
     <div class="trust-grid" style="justify-content:center;gap:32px;">
       <div class="trust-item" style="cursor:pointer;" onclick="location.href='bridal.html'">
@@ -426,7 +454,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <h3 class="footer-logo">EverStyle</h3>
+        <h3 class="footer-logo"><i class="fa-solid fa-bag-shopping"></i> EverStyle</h3>
         <p>Celebrating Pakistan's textile heritage — where tradition meets contemporary elegance in every thread.</p>
         <div class="social-links">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -446,7 +474,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>More From Riwaayat</h4>
+        <h4>More From EverStyle</h4>
         <ul>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Cloth Care</a></li>

@@ -29,6 +29,16 @@ const products = {
     { name: "Floral Print Suit", fabric: "Cotton Lawn | Floral", price: 3799, image: "images/kids-3.jpg", hover: "images/kids-2.jpg", colors: ["#FFB6C1", "#FF69B4", "#DB7093"] },
     { name: "Linen Straight Suit", fabric: "Linen Blend | Summer", price: 4999, image: "images/kids-2.jpg", hover: "images/kids-1.jpg", colors: ["#F5DEB3", "#DEB887", "#D2B48C"] }
   ],
+  sale: [
+    { name: "Embroidered Lawn Suit", fabric: "Premium Lawn | Digital Print", price: 3499, originalPrice: 6999, image: "images/sale-1.jpg", hover: "images/sale-2.jpg", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
+    { name: "Chiffon Embroidered Kurta", fabric: "Chiffon | Hand Embroidered", price: 4299, originalPrice: 8599, image: "images/sale-2.jpg", hover: "images/sale-3.jpg", colors: ["#FFF0F5", "#E6E6FA", "#F5FFFA"] },
+    { name: "Cotton Printed 3-Piece", fabric: "Cotton | Digital Printed", price: 2799, originalPrice: 5599, image: "images/sale-3.jpg", hover: "images/sale-4.jpg", colors: ["#FFE4B5", "#FFDAB9", "#E6E6FA"] },
+    { name: "Khaddar Kurti & Trousers", fabric: "Khaddar | Handloom", price: 2199, originalPrice: 4399, image: "images/sale-4.jpg", hover: "images/sale-5.jpg", colors: ["#D2B48C", "#DEB887", "#BC8F8F"] },
+    { name: "Lawn Unstitched 3-Piece", fabric: "Premium Lawn | Unstitched", price: 3299, originalPrice: 6599, image: "images/sale-5.jpg", hover: "images/sale-6.jpg", colors: ["#FFB6C1", "#FF69B4", "#DB7093"] },
+    { name: "Silk Straight Kurta", fabric: "Silk Blend | Embroidered", price: 4999, originalPrice: 9999, image: "images/sale-6.jpg", hover: "images/sale-7.jpg", colors: ["#FFFFF0", "#F5F5DC", "#E8D5B7"] },
+    { name: "Organza 3-Piece Suit", fabric: "Organza | Digital Print", price: 5499, originalPrice: 10999, image: "images/sale-7.jpg", hover: "images/sale-1.jpg", colors: ["#F0E68C", "#BDB76B", "#EEE8AA"] },
+    { name: "Cambric Palazzo Suit", fabric: "Cambric | Relaxed Fit", price: 2999, originalPrice: 5999, image: "images/sale-1.jpg", hover: "images/sale-2.jpg", colors: ["#B0E0E6", "#AFEEEE", "#D8BFD8"] }
+  ],
   kids: [
     { name: "Kids Shalwar Kameez", fabric: "Cotton | Comfort Fit", price: 1999, image: "images/new-1.jpg", hover: "images/new-2.jpg", colors: ["#4169E1", "#32CD32", "#FF4500"] },
     { name: "Girls Embroidered Frock", fabric: "Chiffon | Party Wear", price: 2499, image: "images/new-2.jpg", hover: "images/new-3.jpg", colors: ["#FFB6C1", "#FF69B4", "#DDA0DD"] },

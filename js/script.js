@@ -5,6 +5,9 @@ function renderProducts(productList, gridId) {
     const colorsHtml = p.colors ? p.colors.map(c =>
       `<span class="color-dot" style="background:${c}"></span>`
     ).join('') : '';
+    const originalHtml = p.originalPrice
+      ? `<span class="original-price">PKR ${p.originalPrice.toLocaleString()}</span>`
+      : '';
     return `
       <div class="product-card fade-in">
         <div class="product-card-image">
@@ -18,6 +21,7 @@ function renderProducts(productList, gridId) {
           <h3>${p.name}</h3>
           <div class="product-price">
             <span class="current-price">PKR ${p.price.toLocaleString()}</span>
+            ${originalHtml}
           </div>
           ${colorsHtml ? `<div class="color-options">${colorsHtml}</div>` : ''}
         </div>
@@ -30,10 +34,9 @@ const page = document.body.dataset.page || 'home';
 
 if (page === 'home') {
   if (typeof products !== 'undefined') {
-    renderProducts(products.bridal.slice(0, 4), 'bridal-grid');
+    renderProducts(products.bridal, 'bridal-grid');
     renderProducts(products.daily.slice(0, 4), 'daily-grid');
-    renderProducts(products.summer.slice(0, 4), 'summer-grid');
-    renderProducts(products.kids.slice(0, 4), 'kids-grid');
+    renderProducts(products.sale, 'sale-grid');
   }
 } else if (products[page]) {
   const count = document.getElementById('product-count');
@@ -47,7 +50,7 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
     const icon = this.querySelector('i');
     icon.classList.toggle('far');
     icon.classList.toggle('fas');
-    icon.style.color = icon.classList.contains('fas') ? '#CC0000' : '';
+    icon.style.color = icon.classList.contains('fas') ? '#800000' : '';
   });
 });
 
@@ -158,6 +161,53 @@ if (newsletterForm) {
     }
   });
 }
+
+/* Auto-scroll for product scroll */
+function startAutoScroll() {
+  const container = document.querySelector('.product-scroll');
+  if (!container) return;
+  let ticking = true;
+  function step() {
+    if (!ticking) return;
+    container.scrollLeft += 1;
+    if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+      container.scrollLeft = 0;
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+  container.addEventListener('mouseenter', () => { ticking = false; });
+  container.addEventListener('mouseleave', () => {
+    ticking = true;
+    requestAnimationFrame(step);
+  });
+}
+setTimeout(startAutoScroll, 500);
+
+/* Countdown timer */
+function startCountdown() {
+  const end = new Date();
+  end.setDate(end.getDate() + 7);
+  function update() {
+    const now = new Date();
+    const diff = end - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const ids = ['days','hours','minutes','seconds'];
+    const vals = [d, h, m, s];
+    ids.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = pad(vals[i]);
+    });
+  }
+  update();
+  setInterval(update, 1000);
+}
+startCountdown();
 
 window.addEventListener('load', () => {
   const overlay = document.getElementById('loading-overlay');
