@@ -268,6 +268,7 @@ ul { list-style: none; }
   transition: all 0.25s ease;
   padding: 28px 32px;
   min-width: 600px;
+  max-width: calc(100vw - 32px);
   display: flex;
   gap: 40px;
   z-index: 100;
@@ -381,6 +382,7 @@ ul { list-style: none; }
 .hero {
   margin-top: 108px;
   position: relative;
+  height: calc(100dvh - 108px);
   height: calc(100vh - 108px);
   min-height: 520px;
   max-height: 720px;
@@ -580,6 +582,14 @@ ul { list-style: none; }
 .trust-item p {
   font-size: 0.67rem;
   color: var(--text-light);
+}
+
+.category-trust .trust-item {
+  cursor: pointer;
+}
+
+.category-trust .trust-item i {
+  font-size: 1.4rem;
 }
 
 /* ========== SECTIONS ========== */
@@ -1569,6 +1579,8 @@ ul { list-style: none; }
   }
   .page-hero-content h1 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
   .page-hero-subtitle { font-size: 0.6rem; letter-spacing: 3px; }
+
+  .banner-text { padding: 28px 28px; }
 }
 
 @media (max-width: 480px) {
@@ -1629,6 +1641,12 @@ ul { list-style: none; }
   .section-header { margin-bottom: 20px; }
   .section-tag { font-size: 0.5rem; }
 
+  .section-tag::before,
+  .section-tag::after {
+    width: 14px;
+    margin: 0 6px;
+  }
+
   .section-banner { margin-bottom: 20px; }
   .section-banner img { min-height: 140px; }
 
@@ -1659,6 +1677,9 @@ ul { list-style: none; }
   .page-hero-content h1 { font-size: clamp(1.2rem, 6vw, 1.5rem); }
   .page-hero-subtitle { font-size: 0.5rem; letter-spacing: 2px; }
 
+  .banner-text { padding: 24px 20px; }
+  .newsletter { padding: 36px 0; }
+
   .back-to-top { width: 34px; height: 34px; bottom: 16px; right: 16px; font-size: 0.7rem; }
 }
 
@@ -1670,4 +1691,6 @@ ul { list-style: none; }
   .logo { font-size: 1rem; }
   .nav-icons { gap: 6px; }
   .nav-icons a { font-size: 0.75rem; }
+  .banner-text { padding: 20px 16px; }
+  .newsletter { padding: 28px 0; }
 }
