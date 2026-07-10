@@ -1,6 +1,7 @@
-function renderProducts(productList, gridId) {
+function renderProducts(productList, gridId, opts = {}) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
+  const isSale = opts.page === 'sale';
   grid.innerHTML = productList.map((p, i) => {
     const colorsHtml = p.colors ? p.colors.map(c =>
       `<span class="color-dot" style="background:${c}"></span>`
@@ -8,6 +9,9 @@ function renderProducts(productList, gridId) {
     const originalHtml = p.originalPrice
       ? `<span class="original-price">PKR ${p.originalPrice.toLocaleString()}</span>`
       : '';
+    const saleExtras = isSale ? `
+      <div class="discount-badge"><span>50%<br><small>off</small></span></div>
+    ` : '';
     return `
       <div class="product-card fade-in">
         <div class="product-card-image">
@@ -15,6 +19,7 @@ function renderProducts(productList, gridId) {
           <img class="img-hover" src="${p.hover || p.image}" alt="${p.name}" loading="lazy">
           <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <button class="add-cart-btn">Add to Cart</button>
+          ${saleExtras}
         </div>
         <div class="product-card-body">
           <div class="product-fabric">${p.fabric}</div>
@@ -41,7 +46,7 @@ if (page === 'home') {
 } else if (products[page]) {
   const count = document.getElementById('product-count');
   if (count) count.textContent = products[page].length;
-  renderProducts(products[page], 'collection-grid');
+  renderProducts(products[page], 'collection-grid', { page });
 }
 
 document.querySelectorAll('.wishlist-btn').forEach(btn => {
@@ -197,11 +202,16 @@ function startCountdown() {
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
     const pad = n => String(n).padStart(2, '0');
-    const ids = ['days','hours','minutes','seconds'];
+    const idSets = [
+      ['days','hours','minutes','seconds'],
+      ['sale-days','sale-hours','sale-mins','sale-secs']
+    ];
     const vals = [d, h, m, s];
-    ids.forEach((id, i) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = pad(vals[i]);
+    idSets.forEach(ids => {
+      ids.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = pad(vals[i]);
+      });
     });
   }
   update();

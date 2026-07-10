@@ -20,14 +20,14 @@ const products = {
     { name: "Trouser Suit Formal", fabric: "Cotton Dobby | Structured", price: 4999, image: "images/summer-4.jpg", hover: "images/summer-1.jpg", colors: ["#708090", "#778899", "#A9A9A9"] }
   ],
   summer: [
-    { name: "Lawn 3-Piece Suit", fabric: "Premium Lawn | Unstitched", price: 5499, image: "images/daily-1.jpg", hover: "images/daily-2.jpg", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
-    { name: "Digital Print Lawn", fabric: "Textured Lawn | Printed", price: 4499, image: "images/daily-2.jpg", hover: "images/daily-3.jpg", colors: ["#FFD700", "#FFA500", "#FF6347"] },
-    { name: "Embroidered Lawn Kurti", fabric: "Lawn | Thread Embroidered", price: 3299, image: "images/daily-3.jpg", hover: "images/daily-4.jpg", colors: ["#F0E68C", "#BDB76B", "#EEE8AA"] },
-    { name: "Cotton Lawn Suit", fabric: "Cotton Dobby | Breathable", price: 3999, image: "images/daily-4.jpg", hover: "images/daily-1.jpg", colors: ["#E0FFFF", "#F0FFFF", "#F5FFFA"] },
-    { name: "Printed Lawn Dupatta", fabric: "Chiffon Lawn | Lightweight", price: 2499, image: "images/banner-summer.jpg", hover: "images/banner-daily.jpg", colors: ["#FFC0CB", "#FFE4E1", "#FFF0F5"] },
-    { name: "Solid Lawn Kurta", fabric: "Lawn | Solid Color", price: 2199, image: "images/banner-daily.jpg", hover: "images/hero-summer.jpg", colors: ["#FFFFFF", "#F8F8FF", "#FFFAFA"] },
-    { name: "Floral Print Suit", fabric: "Cotton Lawn | Floral", price: 3799, image: "images/hero-summer.jpg", hover: "images/hero-daily.jpg", colors: ["#FFB6C1", "#FF69B4", "#DB7093"] },
-    { name: "Linen Straight Suit", fabric: "Linen Blend | Summer", price: 4999, image: "images/hero-daily.jpg", hover: "images/hero-summer.jpg", colors: ["#F5DEB3", "#DEB887", "#D2B48C"] }
+    { name: "Lawn 3-Piece Suit", fabric: "Premium Lawn | Unstitched", price: 5499, image: "images/summer-1.jpg", hover: "images/summer-2.jpg", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
+    { name: "Digital Print Lawn", fabric: "Textured Lawn | Printed", price: 4499, image: "images/summer-2.jpg", hover: "images/summer-3.jpg", colors: ["#FFD700", "#FFA500", "#FF6347"] },
+    { name: "Embroidered Lawn Kurti", fabric: "Lawn | Thread Embroidered", price: 3299, image: "images/summer-3.jpg", hover: "images/summer-4.jpg", colors: ["#F0E68C", "#BDB76B", "#EEE8AA"] },
+    { name: "Cotton Lawn Suit", fabric: "Cotton Dobby | Breathable", price: 3999, image: "images/summer-4.jpg", hover: "images/summer-5.jpg", colors: ["#E0FFFF", "#F0FFFF", "#F5FFFA"] },
+    { name: "Printed Lawn Dupatta", fabric: "Chiffon Lawn | Lightweight", price: 2499, image: "images/summer-5.jpg", hover: "images/summer-6.jpg", colors: ["#FFC0CB", "#FFE4E1", "#FFF0F5"] },
+    { name: "Solid Lawn Kurta", fabric: "Lawn | Solid Color", price: 2199, image: "images/summer-6.jpg", hover: "images/summer-7.jpg", colors: ["#FFFFFF", "#F8F8FF", "#FFFAFA"] },
+    { name: "Floral Print Suit", fabric: "Cotton Lawn | Floral", price: 3799, image: "images/summer-7.jpg", hover: "images/summer-8.jpg", colors: ["#FFB6C1", "#FF69B4", "#DB7093"] },
+    { name: "Linen Straight Suit", fabric: "Linen Blend | Summer", price: 4999, image: "images/summer-8.jpg", hover: "images/summer-1.jpg", colors: ["#F5DEB3", "#DEB887", "#D2B48C"] }
   ],
   sale: [
     { name: "Embroidered Lawn Suit", fabric: "Premium Lawn | Digital Print", price: 3499, originalPrice: 6999, image: "images/sale-1.jpg", hover: "images/sale-2.jpg", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
