@@ -15,8 +15,8 @@ function renderProducts(productList, gridId, opts = {}) {
     return `
       <div class="product-card fade-in">
         <div class="product-card-image">
-          <img class="img-main" src="${p.image}" alt="${p.name}" loading="${i < 2 ? 'eager' : 'lazy'}">
-          <img class="img-hover" src="${p.hover || p.image}" alt="${p.name}" loading="lazy">
+          <img class="img-main" src="${p.image}" alt="${p.name}" width="280" height="420" loading="${i < 2 ? 'eager' : 'lazy'}">
+          <img class="img-hover" src="${p.hover || p.image}" alt="${p.name}" width="280" height="420" loading="lazy">
           <button class="wishlist-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <button class="add-cart-btn">Add to Cart</button>
           ${saleExtras}
@@ -109,16 +109,35 @@ const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
 if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-  });
+  const navOverlay = document.createElement('div');
+  navOverlay.className = 'nav-overlay';
+  navOverlay.id = 'nav-overlay';
+  document.body.appendChild(navOverlay);
 
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('open');
-    });
+  function toggleMenu(forceClose = false) {
+    hamburger.classList.toggle('active', !forceClose);
+    navLinks.classList.toggle('open', !forceClose);
+    navOverlay.classList.toggle('open', !forceClose);
+    document.body.style.overflow = forceClose ? '' : 'hidden';
+  }
+
+  function closeMenu() { toggleMenu(true); }
+
+  hamburger.addEventListener('click', () => toggleMenu());
+  navOverlay.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.nav-links > li > a').forEach(link => {
+    const mega = link.nextElementSibling;
+    if (mega && mega.classList.contains('mega-menu')) {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          mega.classList.toggle('open');
+        }
+      });
+    } else {
+      link.addEventListener('click', closeMenu);
+    }
   });
 }
 
@@ -167,10 +186,10 @@ if (newsletterForm) {
   });
 }
 
-/* Auto-scroll for product scroll */
+/* Auto-scroll for product scroll (desktop only) */
 function startAutoScroll() {
   const container = document.querySelector('.product-scroll');
-  if (!container) return;
+  if (!container || window.innerWidth <= 768) return;
   let ticking = true;
   function step() {
     if (!ticking) return;
@@ -187,7 +206,7 @@ function startAutoScroll() {
     requestAnimationFrame(step);
   });
 }
-setTimeout(startAutoScroll, 500);
+if (window.innerWidth > 768) setTimeout(startAutoScroll, 500);
 
 /* Countdown timer */
 function startCountdown() {

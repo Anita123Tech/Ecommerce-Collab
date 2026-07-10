@@ -382,11 +382,15 @@ ul { list-style: none; }
 .hero {
   margin-top: 108px;
   position: relative;
-  height: calc(100dvh - 108px);
-  height: calc(100vh - 108px);
-  min-height: 520px;
-  max-height: 720px;
   overflow: hidden;
+  height: 480px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+    aspect-ratio: 1440/720;
+  }
 }
 
 .carousel {
@@ -397,6 +401,9 @@ ul { list-style: none; }
 .carousel-slide {
   position: absolute;
   inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -405,18 +412,6 @@ ul { list-style: none; }
 .carousel-slide.active {
   opacity: 1;
   visibility: visible;
-}
-
-.slide-bg {
-  position: absolute;
-  inset: 0;
-}
-
-.slide-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .slide-overlay {
@@ -700,7 +695,7 @@ ul { list-style: none; }
 .section-sale .section-title {
   color: var(--accent);
   animation: titlePop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, titleShimmer 3s ease-in-out 0.9s infinite;
-  will-change: transform, text-shadow, color;
+  will-change: transform;
   position: relative;
 }
 
@@ -1120,8 +1115,8 @@ ul { list-style: none; }
 
 .banner-image {
   flex: 1;
-  height: 260px;
   overflow: hidden;
+  aspect-ratio: 4/3;
 }
 
 .banner-image img {
@@ -1404,13 +1399,13 @@ ul { list-style: none; }
 .sale-banner {
   margin-top: 108px;
   position: relative;
-  height: 340px;
   overflow: hidden;
   background: #4d0000;
-  background-image: url('../home page images/sale banner.jpg');
+  background-image: url('../images/sale page banner.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  aspect-ratio: 1024/234;
 }
 
 /* Sale category tiles (limelight-style) */
@@ -1583,23 +1578,11 @@ ul { list-style: none; }
 .page-hero {
   margin-top: 108px;
   position: relative;
-  height: 300px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-hero .slide-bg {
-  position: absolute;
-  inset: 0;
-}
-
-.page-hero .slide-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 1024/234;
 }
 
 .page-hero .slide-overlay {
@@ -1608,39 +1591,7 @@ ul { list-style: none; }
   background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
 }
 
-.page-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--white);
-}
 
-.page-hero-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-}
-
-.page-hero-subtitle {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-  display: block;
-}
-
-.page-hero-content p {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.7);
-  max-width: 480px;
-  margin: 0 auto;
-}
 
 /* ========== COLLECTION HEADER (with count & sort) ========== */
 
@@ -1714,7 +1665,7 @@ ul { list-style: none; }
 
   .banner-image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 4/3;
   }
 
   .trust-grid {
@@ -1730,12 +1681,7 @@ ul { list-style: none; }
 
   .hero {
     margin-top: 106px;
-    height: 320px;
-    min-height: auto;
-    max-height: none;
   }
-
-  .slide-bg img { object-position: center top; }
 
   .slide-content { padding: 0 6%; }
   .slide-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
@@ -1823,6 +1769,33 @@ ul { list-style: none; }
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    top: 106px;
+    background: rgba(0,0,0,0.4);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links > li > a .arrow {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 0.6rem;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links > li > a .arrow.open {
+    transform: rotate(180deg);
+  }
+
   .section { padding: 36px 0; }
 
   .section-header { margin-bottom: 28px; }
@@ -1861,6 +1834,13 @@ ul { list-style: none; }
     text-align: center;
   }
 
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+
   .wishlist-btn,
   .add-cart-btn {
     opacity: 1;
@@ -1870,13 +1850,9 @@ ul { list-style: none; }
   .account-icon { display: none; }
 
   .page-hero {
-    height: 220px;
     margin-top: 106px;
   }
-  .page-hero-content h1 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
-  .page-hero-subtitle { font-size: 0.6rem; letter-spacing: 3px; }
-
-  .sale-banner { height: 260px; margin-top: 106px; }
+  .sale-banner { margin-top: 106px; }
 
   .sale-cat-tile { width: 110px; }
   .sale-cat-tile .cat-img { width: 90px; height: 90px; }
@@ -1927,12 +1903,7 @@ ul { list-style: none; }
 
   .hero {
     margin-top: 86px;
-    height: 300px;
-    min-height: auto;
-    max-height: none;
   }
-
-  .slide-bg img { object-position: center top; }
 
   .slide-content { padding: 0 5%; }
   .slide-title { font-size: clamp(1.4rem, 9vw, 1.8rem); }
@@ -1975,11 +1946,8 @@ ul { list-style: none; }
   .contact-info li { font-size: 0.65rem; }
   .footer-bottom { font-size: 0.6rem; }
 
-  .page-hero { height: 180px; margin-top: 86px; }
-  .page-hero-content h1 { font-size: clamp(1.2rem, 6vw, 1.5rem); }
-  .page-hero-subtitle { font-size: 0.5rem; letter-spacing: 2px; }
-
-  .sale-banner { height: 200px; margin-top: 86px; }
+  .page-hero { margin-top: 86px; }
+  .sale-banner { margin-top: 86px; }
   .sale-categories { padding: 20px 0; }
   .sale-categories .container { gap: 12px; }
   .sale-cat-tile { width: 90px; }
@@ -1997,13 +1965,28 @@ ul { list-style: none; }
 
 @media (max-width: 360px) {
   .trust-grid { grid-template-columns: 1fr; gap: 10px; }
-  .product-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: 1fr; gap: 8px; }
   .footer-grid { grid-template-columns: 1fr; }
   .product-scroll .product-card { flex: 0 0 85px; }
+  .product-scroll { gap: 8px; }
   .logo { font-size: 1rem; }
   .nav-icons { gap: 6px; }
   .nav-icons a { font-size: 0.75rem; }
   .banner-text { padding: 20px 16px; }
   .newsletter { padding: 28px 0; }
+  .section { padding: 20px 0; }
+  .section-header { margin-bottom: 14px; }
+  .hero { margin-top: 86px; }
+  .sale-banner { margin-top: 86px; }
+  .page-hero { margin-top: 86px; }
 }
 
+
+
+/* CLS Prevention */
+.product-card-image {
+  background: var(--bg-light);
+}
+.section-banner img {
+  aspect-ratio: 3/1;
+}
