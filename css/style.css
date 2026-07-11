@@ -180,6 +180,7 @@ ul { list-style: none; }
   padding: 0;
   background: var(--white);
   border-bottom: 1px solid var(--gray-200);
+  position: relative;
 }
 
 .nav-container {
@@ -485,6 +486,12 @@ ul { list-style: none; }
   max-width: 440px;
 }
 
+.hero .btn {
+  padding: 12px 30px;
+  font-size: 0.65rem;
+  align-self: flex-start;
+}
+
 
 
 .carousel-controls {
@@ -764,6 +771,8 @@ ul { list-style: none; }
 .section-sale .sale-cta {
   animation: fadeUp 0.7s ease 0.45s forwards;
   opacity: 0;
+  padding: 12px 30px;
+  font-size: 0.65rem;
 }
 
 @keyframes fadeUp {
@@ -1687,14 +1696,19 @@ ul { list-style: none; }
   .slide-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
   .slide-subtitle { font-size: 0.6rem; letter-spacing: 3px; }
   .slide-desc { font-size: 0.8rem; margin-bottom: 20px; }
-  .hero .btn { padding: 10px 24px; font-size: 0.6rem; }
+  .hero .btn { padding: 9px 22px; font-size: 0.55rem; align-self: flex-start; }
+
+  .section-sale .sale-cta {
+    padding: 10px 24px;
+    font-size: 0.6rem;
+  }
 
   .header-top { padding: 5px 0; font-size: 0.6rem; }
   .header-promo { padding: 4px 0; font-size: 0.58rem; }
 
   .nav-links {
     position: absolute;
-    top: 112px;
+    top: 100%;
     left: 0;
     width: 100%;
     background: var(--white);
@@ -1707,6 +1721,8 @@ ul { list-style: none; }
     z-index: 100;
     border-bottom: 2px solid var(--primary);
     height: auto;
+    max-height: calc(100vh - 112px);
+    overflow-y: auto;
     visibility: hidden;
   }
 
@@ -1805,6 +1821,7 @@ ul { list-style: none; }
   .section-banner { margin-bottom: 28px; }
   .section-banner img { min-height: 200px; object-fit: cover; }
 
+  .section-tile { overflow: hidden; }
   .product-scroll .product-card {
     flex: 0 0 120px;
   }
@@ -1872,7 +1889,12 @@ ul { list-style: none; }
   .nav-icons a { font-size: 0.85rem; }
 
   .nav-links {
-    top: 108px;
+    top: 100%;
+    max-height: calc(100vh - 100px);
+  }
+
+  .nav-overlay {
+    top: 100px;
   }
 
   .trust-bar { padding: 20px 0; }
@@ -1887,6 +1909,7 @@ ul { list-style: none; }
     gap: 12px;
   }
 
+  .section-tile { overflow: hidden; }
   .product-scroll { gap: 10px; }
   .product-scroll .product-card { flex: 0 0 100px; }
 
@@ -1902,7 +1925,12 @@ ul { list-style: none; }
   .slide-content { padding: 0 5%; }
   .slide-title { font-size: clamp(1.4rem, 9vw, 1.8rem); }
   .slide-desc { font-size: 0.72rem; }
-  .hero .btn { padding: 8px 18px; font-size: 0.55rem; }
+  .hero .btn { padding: 7px 16px; font-size: 0.5rem; align-self: flex-start; }
+
+  .section-sale .sale-cta {
+    padding: 8px 20px;
+    font-size: 0.55rem;
+  }
 
   .section { padding: 28px 0; }
   .section-header { margin-bottom: 20px; }
@@ -1980,4 +2008,10 @@ ul { list-style: none; }
 }
 .section-banner img {
   aspect-ratio: 3/1;
+}
+.product-scroll {
+  min-height: 280px;
+}
+.product-grid {
+  min-height: 280px;
 }
