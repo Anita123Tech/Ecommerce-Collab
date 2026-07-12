@@ -13,7 +13,7 @@ function renderProducts(productList, gridId, opts = {}) {
       <div class="discount-badge"><span>50%<br><small>off</small></span></div>
     ` : '';
     return `
-      <div class="product-card fade-in">
+      <div class="product-card fade-in" data-cat="${opts.cat || ''}" data-idx="${i}">
         <div class="product-card-image">
           <img class="img-main" src="${p.image}" alt="${p.name}" width="280" height="420" loading="${i < 2 ? 'eager' : 'lazy'}">
           <img class="img-hover" src="${p.hover || p.image}" alt="${p.name}" width="280" height="420" loading="lazy">
@@ -39,14 +39,14 @@ const page = document.body.dataset.page || 'home';
 
 if (page === 'home') {
   if (typeof products !== 'undefined') {
-    renderProducts(products.bridal, 'bridal-grid');
-    renderProducts(products.daily.slice(0, 4), 'daily-grid');
-    renderProducts(products.sale, 'sale-grid');
+    renderProducts(products.bridal, 'bridal-grid', { cat: 'bridal' });
+    renderProducts(products.daily.slice(0, 4), 'daily-grid', { cat: 'daily' });
+    renderProducts(products.sale, 'sale-grid', { cat: 'sale' });
   }
 } else if (products[page]) {
   const count = document.getElementById('product-count');
   if (count) count.textContent = products[page].length;
-  renderProducts(products[page], 'collection-grid', { page });
+  renderProducts(products[page], 'collection-grid', { page, cat: page });
 }
 
 document.querySelectorAll('.wishlist-btn').forEach(btn => {
@@ -56,6 +56,18 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
     icon.classList.toggle('far');
     icon.classList.toggle('fas');
     icon.style.color = icon.classList.contains('fas') ? '#800000' : '';
+  });
+});
+
+/* Product card click → open product detail page */
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.wishlist-btn')) return;
+    var cat = this.dataset.cat;
+    var idx = this.dataset.idx;
+    if (cat) {
+      window.location.href = 'product.html?cat=' + cat + '&idx=' + idx;
+    }
   });
 });
 
