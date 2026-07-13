@@ -2011,7 +2011,7 @@ ul { list-style: none; }
   aspect-ratio: 3/1;
 }
 .product-scroll {
-  min-height: 280px;
+  min-height: auto;
 }
 .product-grid {
   min-height: 280px;
