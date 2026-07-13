@@ -40,7 +40,7 @@ const page = document.body.dataset.page || 'home';
 if (page === 'home') {
   if (typeof products !== 'undefined') {
     renderProducts(products.bridal, 'bridal-grid');
-    renderProducts(products.daily.slice(0, 4), 'daily-grid');
+    renderProducts(products.daily.slice(0, 8), 'daily-grid');
     renderProducts(products.sale, 'sale-grid');
   }
 } else if (products[page]) {

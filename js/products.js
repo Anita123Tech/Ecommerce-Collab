@@ -10,14 +10,14 @@ const products = {
     { name: "Ivory Net Lehenga", fabric: "Net | Silk Blend", price: 59999, image: "images/bridal-8.webp", hover: "images/bridal-1.webp", colors: ["#FFFFF0", "#FDF5E6", "#E8D5B7"] }
   ],
   daily: [
-    { name: "Cotton Shalwar Kameez", fabric: "Premium Cotton | Cambric", price: 3499, image: "images/daily-1.webp", hover: "images/daily-2.webp", colors: ["#FFFFFF", "#F5F5DC", "#B0C4DE"] },
-    { name: "Khaddar Kurti Pants", fabric: "Khaddar | Handloom", price: 2899, image: "images/daily-2.webp", hover: "images/daily-3.webp", colors: ["#D2B48C", "#DEB887", "#BC8F8F"] },
-    { name: "Printed 3-Piece Suit", fabric: "Cambric | Digital Print", price: 4499, image: "images/daily-3.webp", hover: "images/daily-4.webp", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
-    { name: "Casual Kurta Dupatta", fabric: "Cotton Viscose | Blend", price: 2499, image: "images/daily-4.webp", hover: "images/daily-1.webp", colors: ["#F0FFF0", "#FFF0F5", "#F5FFFA"] },
-    { name: "Embroidered Straight Kurta", fabric: "Cotton Silk | Thread Work", price: 3999, image: "images/summer-1.webp", hover: "images/summer-2.webp", colors: ["#FFE4B5", "#FFDAB9", "#E6E6FA"] },
-    { name: "Palazzo Pant Suit", fabric: "Cambric | Relaxed Fit", price: 3299, image: "images/summer-2.webp", hover: "images/summer-3.webp", colors: ["#B0E0E6", "#AFEEEE", "#D8BFD8"] },
-    { name: "Digital Print Kurta", fabric: "Lawn | Summer Weight", price: 2799, image: "images/summer-3.webp", hover: "images/summer-4.webp", colors: ["#FFFACD", "#E0FFFF", "#F0E68C"] },
-    { name: "Trouser Suit Formal", fabric: "Cotton Dobby | Structured", price: 4999, image: "images/summer-4.webp", hover: "images/summer-1.webp", colors: ["#708090", "#778899", "#A9A9A9"] }
+    { name: "Embroidered Lawn Suit", fabric: "Premium Lawn | Digital Print", price: 3499, image: "https://i.pinimg.com/736x/de/5a/55/de5a55f977a1c20f7e13697f97492aee.jpg", hover: "https://i.pinimg.com/736x/18/9d/87/189d877a738a53a3615455c95737f356.jpg", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
+    { name: "Chiffon Embroidered Kurta", fabric: "Chiffon | Hand Embroidered", price: 4299, image: "https://i.pinimg.com/736x/18/9d/87/189d877a738a53a3615455c95737f356.jpg", hover: "https://i.pinimg.com/736x/ab/6e/1c/ab6e1ccbf11eeb35e270248038471ce0.jpg", colors: ["#FFF0F5", "#E6E6FA", "#F5FFFA"] },
+    { name: "Cotton Printed 3-Piece", fabric: "Cotton | Digital Printed", price: 2799, image: "https://i.pinimg.com/736x/ab/6e/1c/ab6e1ccbf11eeb35e270248038471ce0.jpg", hover: "https://i.pinimg.com/736x/78/0c/07/780c073d5fa127131fa5b42ae9b29557.jpg", colors: ["#FFE4B5", "#FFDAB9", "#E6E6FA"] },
+    { name: "Khaddar Kurti & Trousers", fabric: "Khaddar | Handloom", price: 2199, image: "https://i.pinimg.com/736x/78/0c/07/780c073d5fa127131fa5b42ae9b29557.jpg", hover: "https://i.pinimg.com/736x/b8/3a/d1/b83ad1204280d5a4295901633f7b632b.jpg", colors: ["#D2B48C", "#DEB887", "#BC8F8F"] },
+    { name: "Lawn Unstitched 3-Piece", fabric: "Premium Lawn | Unstitched", price: 3299, image: "https://i.pinimg.com/736x/b8/3a/d1/b83ad1204280d5a4295901633f7b632b.jpg", hover: "https://i.pinimg.com/736x/30/0d/57/300d5751315566c5bc507386e9aafa75.jpg", colors: ["#FFB6C1", "#FF69B4", "#DB7093"] },
+    { name: "Silk Straight Kurta", fabric: "Silk Blend | Embroidered", price: 4999, image: "https://i.pinimg.com/736x/30/0d/57/300d5751315566c5bc507386e9aafa75.jpg", hover: "https://i.pinimg.com/1200x/72/a1/ef/72a1ef2fdf2b79859a98a53cb401751d.jpg", colors: ["#FFFFF0", "#F5F5DC", "#E8D5B7"] },
+    { name: "Organza 3-Piece Suit", fabric: "Organza | Digital Print", price: 5499, image: "https://i.pinimg.com/1200x/72/a1/ef/72a1ef2fdf2b79859a98a53cb401751d.jpg", hover: "https://i.pinimg.com/1200x/63/35/97/63359794b67897e2d5231151b7753685.jpg", colors: ["#F0E68C", "#BDB76B", "#EEE8AA"] },
+    { name: "Cambric Palazzo Suit", fabric: "Cambric | Relaxed Fit", price: 2999, image: "https://i.pinimg.com/1200x/63/35/97/63359794b67897e2d5231151b7753685.jpg", hover: "https://i.pinimg.com/736x/de/5a/55/de5a55f977a1c20f7e13697f97492aee.jpg", colors: ["#B0E0E6", "#AFEEEE", "#D8BFD8"] }
   ],
   summer: [
     { name: "Lawn 3-Piece Suit", fabric: "Premium Lawn | Unstitched", price: 5499, image: "images/summer-1.webp", hover: "images/summer-2.webp", colors: ["#FFB6C1", "#98FB98", "#87CEEB"] },
