@@ -1707,8 +1707,8 @@ ul { list-style: none; }
   .header-promo { padding: 4px 0; font-size: 0.58rem; }
 
   .nav-links {
-    position: fixed;
-    top: 112px;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
     background: var(--white);
@@ -1716,9 +1716,9 @@ ul { list-style: none; }
     padding: 20px 16px;
     gap: 0;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transform: translateX(-100%);
+    transform: translateY(-120%);
     transition: var(--transition);
-    z-index: 1000;
+    z-index: 100;
     border-bottom: 2px solid var(--primary);
     height: auto;
     max-height: calc(100vh - 112px);
@@ -1727,7 +1727,7 @@ ul { list-style: none; }
   }
 
   .nav-links.open {
-    transform: translateX(0);
+    transform: translateY(0);
     visibility: visible;
   }
 
@@ -1791,7 +1791,7 @@ ul { list-style: none; }
     inset: 0;
     top: 112px;
     background: rgba(0,0,0,0.4);
-    z-index: 999;
+    z-index: 99;
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
