@@ -1982,6 +1982,19 @@ ul { list-style: none; }
   .newsletter { padding: 36px 0; }
 
   .back-to-top { width: 34px; height: 34px; bottom: 16px; right: 16px; font-size: 0.7rem; }
+
+  .footer .newsletter-form {
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .footer .newsletter-form input {
+    flex: 1 1 60%;
+    min-width: 120px;
+  }
+  .footer .newsletter-form .btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 360px) {
