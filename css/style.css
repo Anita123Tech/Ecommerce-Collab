@@ -1,26 +1,17 @@
 :root {
   --primary: #500000;
   --primary-dark: #300000;
-  --primary-light: #6B0000;
   --accent: #FFD700;
-  --accent-light: #FFF3C4;
-  --bg-cream: #FFF8F3;
   --bg-light: #FFF0EB;
   --white: #FFFFFF;
-  --black: #1A1A1A;
   --gray-100: #F8F6F4;
   --gray-200: #E8E4E0;
-  --gray-300: #C4C0BC;
   --gray-400: #999490;
   --gray-500: #6B6662;
-  --gray-600: #4A4642;
   --text: #2C2A28;
   --text-light: #7A7672;
   --footer-bg: #2D2B2A;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
-  --shadow-hover: 0 12px 40px rgba(128,0,0,0.12);
   --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --font-body: 'Poppins', sans-serif;
 }
@@ -298,7 +289,7 @@ ul { list-style: none; }
   box-shadow: 0 12px 40px rgba(0,0,0,0.1);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
   padding: 28px 32px;
   min-width: 600px;
   max-width: calc(100vw - 32px);
@@ -369,6 +360,11 @@ ul { list-style: none; }
   color: var(--text);
   transition: var(--transition);
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
 }
 
 .nav-icons a:hover {
@@ -400,7 +396,9 @@ ul { list-style: none; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
   flex-shrink: 0;
 }
 
@@ -569,23 +567,27 @@ ul { list-style: none; }
 }
 
 .dot {
-  width: 28px;
-  height: 3px;
+  width: 10px;
+  height: 10px;
   background: rgba(255,255,255,0.35);
+  border-radius: 50%;
   cursor: pointer;
   transition: var(--transition);
+  border: none;
+  padding: 0;
 }
 
 .dot.active {
   background: var(--accent);
-  width: 40px;
+  width: 12px;
+  height: 12px;
 }
 
 .dot:hover {
   background: rgba(255,255,255,0.7);
 }
 
-/* ========== TRUST BAR (Khaadi style) ========== */
+/* ========== TRUST BAR ========== */
 
 .trust-bar {
   padding: 32px 0;
@@ -849,7 +851,7 @@ ul { list-style: none; }
 /* Sale product card styling */
 .section-sale .product-card {
   border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  transition: border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 
 .section-sale .product-card:hover {
@@ -931,7 +933,7 @@ ul { list-style: none; }
   50% { border-color: rgba(255,215,0,0.2); box-shadow: 0 0 16px rgba(255,215,0,0.06); }
 }
 
-/* ========== PRODUCT GRID (Khaadi style) ========== */
+/* ========== PRODUCT GRID ========== */
 
 .product-grid {
   display: grid;
@@ -1010,10 +1012,10 @@ ul { list-style: none; }
 
 .wishlist-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
   background: rgba(255,255,255,0.85);
   border: none;
   cursor: pointer;
@@ -1188,7 +1190,7 @@ ul { list-style: none; }
   background: linear-gradient(135deg, #800000 0%, #9A1A1A 100%);
 }
 
-/* ========== SECTION BANNER (Khaadi style) ========== */
+/* ========== SECTION BANNER ========== */
 
 .section-banner {
   width: 100%;
@@ -1276,7 +1278,7 @@ ul { list-style: none; }
   background: #E6C200;
 }
 
-/* ========== FOOTER (Khaadi style) ========== */
+/* ========== FOOTER ========== */
 
 .footer {
   background: var(--footer-bg);
@@ -1450,7 +1452,7 @@ ul { list-style: none; }
   aspect-ratio: 1024/234;
 }
 
-/* Sale category tiles (limelight-style) */
+/* Sale category tiles */
 .sale-categories {
   padding: 30px 0;
   background: var(--gray-100);
@@ -2043,18 +2045,18 @@ ul { list-style: none; }
   .section-header { margin-bottom: 14px; }
 }
 
-
-
-/* CLS Prevention */
-.product-card-image {
-  background: var(--bg-light);
-}
-.section-banner img {
-  aspect-ratio: 3/1;
-}
-.product-scroll {
-  min-height: auto;
-}
-.product-grid {
-  min-height: 280px;
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .carousel-slide { animation: none !important; }
+  .slide-title { animation: none !important; opacity: 1 !important; }
+  .slide-subtitle, .slide-desc, .hero .btn { animation: none !important; opacity: 1 !important; }
+  .discount-badge, .sale-tag { animation: none !important; }
+  .countdown-num { animation: none !important; }
+  #loading-overlay { animation: none !important; }
 }
