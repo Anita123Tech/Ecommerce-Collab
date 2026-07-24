@@ -171,13 +171,9 @@
 
     document.getElementById('modal-close').addEventListener('click',function(e){e.preventDefault();document.getElementById('success-overlay').classList.remove('show');location.hash='#cart-view';});
 
-    var btt=document.getElementById('btt');
-    addEventListener('scroll',function(){btt.classList.toggle('vis',scrollY>400);});
-    btt.onclick=function(){scrollTo({top:0,behavior:'smooth'});};
-
     addEventListener('load',function(){var o=document.getElementById('loading-overlay');if(o)o.classList.add('hidden');});
 
-    var nl=document.getElementById('nl-form');
+    var nl=document.getElementById('newsletter-form');
     if(nl) nl.addEventListener('submit',function(e){e.preventDefault();var b=this.querySelector('.btn');b.textContent='Subscribed!';setTimeout(function(){b.textContent='Subscribe';},2000);this.reset();});
 
     Cart.updateBadge();

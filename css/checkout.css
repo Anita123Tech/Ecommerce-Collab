@@ -227,7 +227,6 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .modal-btns .s:hover{border-color:var(--primary);color:var(--primary)}
 
 .back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--white);border:none;cursor:pointer;font-size:.9rem;display:none;align-items:center;justify-content:center;z-index:999;transition:all var(--transition)}
-.back-to-top.vis{display:flex}
 .back-to-top:hover{background:var(--primary-dark);transform:translateY(-2px)}
 
 /* ═══ FOOTER ═══ */
@@ -251,8 +250,8 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .newsletter-form .btn:hover{background:#E6C200}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:.7rem;color:var(--gray-400)}
-.footer-pay{display:flex;align-items:center;gap:12px;color:var(--gray-400);font-size:.7rem}
-.footer-pay i{font-size:1.3rem}
+.payment-methods{display:flex;align-items:center;gap:12px;color:var(--gray-400);font-size:.7rem}
+.payment-methods i{font-size:1.3rem}
 
 /* ═══ STEP PROGRESS BAR ═══ */
 .step-bar{display:flex;align-items:center;justify-content:center;gap:4px;padding:20px 0 8px;max-width:560px;margin:0 auto}
