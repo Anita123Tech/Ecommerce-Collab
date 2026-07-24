@@ -349,6 +349,110 @@
 }
 
 /* ==========================================================
+   CHECKLIST / CHECKBOX OPTIONS
+   ========================================================== */
+.pd-checklist {
+  margin-bottom: 24px;
+}
+
+.pd-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border: 1.5px solid var(--gray-200);
+  background: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.pd-check-item:hover {
+  border-color: var(--gray-400);
+  background: var(--gray-100);
+}
+
+/* Hide native checkbox */
+.pd-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom checkmark box */
+.pd-checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gray-300);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+  position: relative;
+}
+
+.pd-checkmark::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.6rem;
+  color: var(--white);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+/* Checked state */
+.pd-checkbox:checked + .pd-checkmark {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.pd-checkbox:checked + .pd-checkmark::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Focus state for accessibility */
+.pd-checkbox:focus-visible + .pd-checkmark {
+  box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.2);
+}
+
+/* Checked item highlight */
+.pd-check-item:has(.pd-checkbox:checked) {
+  border-color: var(--primary);
+  background: rgba(128, 0, 0, 0.03);
+}
+
+/* Text content */
+.pd-check-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.pd-check-text i {
+  font-size: 0.82rem;
+  color: var(--primary);
+  width: 18px;
+  text-align: center;
+}
+
+.pd-check-text small {
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: auto;
+}
+
+/* ==========================================================
    ACTION BUTTONS (Add to Cart + Wishlist heart)
    ========================================================== */
 .pd-actions {
@@ -392,6 +496,30 @@
 /* ==========================================================
    META / TRUST INFO (Free Shipping, Returns, Secure Payment)
    ========================================================== */
+.pd-continue-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.pd-continue-link:hover {
+  color: var(--primary);
+}
+
+.pd-continue-link i {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.pd-continue-link:hover i {
+  transform: translateX(-3px);
+}
 .pd-meta {
   display: flex;
   flex-direction: column;
@@ -565,6 +693,14 @@
     font-size: 0.78rem;
   }
 
+  .pd-check-item {
+    padding: 8px 12px;
+  }
+
+  .pd-check-text {
+    font-size: 0.72rem;
+  }
+
   .pd-add-to-cart {
     padding: 14px 24px;
   }
@@ -632,6 +768,29 @@
     margin-bottom: 20px;
   }
 
+  .pd-check-item {
+    padding: 8px 10px;
+    margin-bottom: 4px;
+  }
+
+  .pd-check-text {
+    font-size: 0.68rem;
+    gap: 6px;
+  }
+
+  .pd-check-text i {
+    font-size: 0.72rem;
+  }
+
+  .pd-check-text small {
+    font-size: 0.55rem;
+  }
+
+  .pd-checkmark {
+    width: 18px;
+    height: 18px;
+  }
+
   .pd-add-to-cart {
     padding: 12px 20px;
     font-size: 0.65rem;
@@ -664,5 +823,98 @@
 
   .pd-recommended {
     padding: 28px 0 36px;
+  }
+}
+
+/* ==========================================================
+   RESPONSIVE — Extra Small (max-width: 360px)
+   Minimum viable layout
+   ========================================================== */
+@media (max-width: 360px) {
+  .pd-section {
+    margin-top: 86px;
+    padding: 16px 0 12px;
+  }
+
+  .pd-layout {
+    gap: 16px;
+  }
+
+  .pd-title {
+    font-size: 1rem;
+  }
+
+  .pd-price {
+    font-size: 0.85rem;
+  }
+
+  .pd-size-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.6rem;
+  }
+
+  .pd-qty-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .pd-qty-value {
+    width: 40px;
+    line-height: 32px;
+    font-size: 0.72rem;
+  }
+
+  .pd-actions {
+    flex-direction: column;
+  }
+
+  .pd-add-to-cart {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .pd-wishlist-btn {
+    width: 100%;
+    height: 44px;
+  }
+
+  .pd-meta {
+    gap: 10px;
+  }
+
+  .pd-meta-item {
+    gap: 8px;
+  }
+
+  .pd-meta-item i {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
+  }
+
+  .pd-details-list li {
+    font-size: 0.64rem;
+    padding: 7px 0;
+  }
+
+  .pd-recommended {
+    padding: 24px 0 28px;
+  }
+}
+
+/* ==========================================================
+   TABLET LAYOUT — Meta info horizontal (max-width: 1024px)
+   ========================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pd-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .pd-meta-item {
+    flex: 1;
+    min-width: 140px;
   }
 }
