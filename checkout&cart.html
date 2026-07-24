@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shopping Cart & Checkout — EverStyle">
+    <title>Cart & Checkout — EverStyle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'"><noscript></noscript>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'"><noscript></noscript>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23800000' d='M352 160v-32C352 57.42 294.58 0 224 0S96 57.42 96 128v32H0v272c0 44.18 35.82 80 80 80h288c44.18 0 80-35.82 80-80V160h-96zM224 48c44.11 0 80 35.89 80 80v32H144v-32c0-44.11 35.89-80 80-80z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+    <div id="loading-overlay"><div class="loader"></div></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-top"><div class="container"><p>Free Shipping on orders over PKR 4,999 | Easy 14-Day Returns</p></div></div>
+        <div class="header-promo"><div class="container">Discover what's new this season — <a href="summer.html">Shop Summer '26</a></div></div>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="logo"><i class="fa-solid fa-bag-shopping"></i> EverStyle</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">New In</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-col"><h4>Bridal</h4><ul><li><a href="bridal.html">Lehengas</a></li><li><a href="bridal.html">Shararas</a></li><li><a href="bridal.html" class="view-all">View All</a></li></ul></div>
+                            <div class="mega-menu-col"><h4>Daily Wear</h4><ul><li><a href="daily.html">Shalwar Kameez</a></li><li><a href="daily.html">Kurtas</a></li><li><a href="daily.html" class="view-all">View All</a></li></ul></div>
+                            <div class="mega-menu-col"><h4>Summer</h4><ul><li><a href="summer.html">Lawn Suits</a></li><li><a href="summer.html">Cotton Suits</a></li><li><a href="summer.html" class="view-all">View All</a></li></ul></div>
+                            <div class="mega-menu-col"><h4>Kids</h4><ul><li><a href="kids.html">Boys Shalwar Kameez</a></li><li><a href="kids.html">Girls Frocks</a></li><li><a href="kids.html" class="view-all">View All</a></li></ul></div>
+                        </div>
+                    </li>
+                    <li><a href="bridal.html">Bridal</a></li>
+                    <li><a href="daily.html">Daily Wear</a></li>
+                    <li><a href="summer.html">Summer</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="sale.html">Sale</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="far fa-heart"></i></a>
+                    <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+                </div>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══ CART VIEW ═══ -->
+    <section id="cart-view">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li><li class="sep"><i class="fas fa-chevron-right"></i></li><li class="current">Shopping Cart</li>
+                </ul>
+            </div>
+            <div class="page-header">
+                <h1>Shopping Cart</h1>
+                <span class="count" id="cart-count"></span>
+            </div>
+            <div class="ship-bar" id="ship-bar">
+                <i class="fas fa-truck"></i>
+                <div class="ship-bar-body">
+                    <p id="ship-text"></p>
+                    <div class="track"><div class="fill" id="ship-fill"></div></div>
+                </div>
+            </div>
+
+            <div class="empty-wrap" id="empty" style="display:none">
+                <div class="empty-icon"><i class="fas fa-shopping-bag"></i></div>
+                <h2>Your cart is empty</h2>
+                <p>Looks like you haven't added anything yet. Explore our collections to find something you love.</p>
+                <a href="index.html" class="shop-btn"><i class="fas fa-arrow-left"></i> Start Shopping</a>
+            </div>
+
+            <div class="cart-layout" id="cart-content" style="display:none">
+                <div class="cart-items-wrap" id="cart-items"></div>
+                <div class="summary-card" id="cart-summary"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CHECKOUT VIEW ═══ -->
+    <section id="checkout-view" style="display:none">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li><li class="sep"><i class="fas fa-chevron-right"></i></li>
+                    <li><a href="checkout&cart.html#cart-view">Cart</a></li><li class="sep"><i class="fas fa-chevron-right"></i></li><li class="current">Checkout</li>
+                </ul>
+            </div>
+            <div class="page-header"><h1>Checkout</h1></div>
+            <div class="step-bar">
+                <a href="checkout&cart.html#cart-view" class="step done"><span class="step-num"><i class="fas fa-check" style="font-size:.6rem"></i></span><span class="step-label">Cart</span></a>
+                <div class="step-line done"></div>
+                <div class="step active"><span class="step-num">2</span><span class="step-label">Information</span></div>
+                <div class="step-line"></div>
+                <div class="step"><span class="step-num">3</span><span class="step-label">Payment</span></div>
+                <div class="step-line"></div>
+                <div class="step"><span class="step-num">4</span><span class="step-label">Confirmation</span></div>
+            </div>
+            <div class="checkout-layout">
+                <div class="checkout-forms">
+                    <div class="co-card">
+                        <h2>Contact Information</h2><p class="sub">We'll send your order confirmation here</p>
+                        <div class="form-row full"><div class="fg"><label>Email <span class="r">*</span></label><input type="email" id="co-email" placeholder="you@example.com"><div class="em" id="err-email"></div></div></div>
+                        <div class="form-row full"><div class="fg"><label>Phone <span class="r">*</span></label><input type="tel" id="co-phone" placeholder="+92 3XX XXXXXXX"><div class="em" id="err-phone"></div></div></div>
+                    </div>
+                    <div class="co-card">
+                        <h2>Shipping Address</h2><p class="sub">Where should we deliver?</p>
+                        <div class="form-row">
+                            <div class="fg"><label>First Name <span class="r">*</span></label><input type="text" id="co-fn" placeholder="First name"><div class="em" id="err-fn"></div></div>
+                            <div class="fg"><label>Last Name <span class="r">*</span></label><input type="text" id="co-ln" placeholder="Last name"><div class="em" id="err-ln"></div></div>
+                        </div>
+                        <div class="form-row full"><div class="fg"><label>Address <span class="r">*</span></label><input type="text" id="co-addr" placeholder="Street address"><div class="em" id="err-addr"></div></div></div>
+                        <div class="form-row full"><div class="fg"><label>Apartment, Suite</label><input type="text" id="co-addr2" placeholder="Optional"></div></div>
+                        <div class="form-row tri">
+                            <div class="fg"><label>City <span class="r">*</span></label><input type="text" id="co-city" placeholder="City"><div class="em" id="err-city"></div></div>
+                            <div class="fg"><label>Province <span class="r">*</span></label><select id="co-prov"><option value="">Select</option><option>Punjab</option><option>Sindh</option><option>KPK</option><option>Balochistan</option><option>Islamabad</option><option>Azad Kashmir</option><option>Gilgit-Baltistan</option></select><div class="em" id="err-prov"></div></div>
+                            <div class="fg"><label>Postal Code <span class="r">*</span></label><input type="text" id="co-post" placeholder="00000"><div class="em" id="err-post"></div></div>
+                        </div>
+                    </div>
+                    <div class="co-card">
+                        <h2>Delivery Method</h2><p class="sub">Choose your shipping speed</p>
+                        <div class="del-opts" id="del-opts">
+                            <label class="del-opt sel" data-m="std"><input type="radio" name="del" value="std" checked><div class="dh"><span class="dt"><span class="rd"></span> Standard</span><span class="dp" id="del-price"></span></div><div class="dd">5–7 business days</div></label>
+                            <label class="del-opt" data-m="exp"><input type="radio" name="del" value="exp"><div class="dh"><span class="dt"><span class="rd"></span> Express</span><span class="dp">PKR 500</span></div><div class="dd">2–3 business days</div></label>
+                        </div>
+                    </div>
+                    <div class="co-card">
+                        <h2>Payment</h2><p class="sub">All transactions are secure and encrypted</p>
+                        <div class="pay-grid" id="pay-grid">
+                            <label class="pay-opt sel" data-m="cod"><input type="radio" name="pay" value="cod" checked><i class="fas fa-money-bill-wave"></i><span>Cash on Delivery</span></label>
+                            <label class="pay-opt" data-m="card"><input type="radio" name="pay" value="card"><i class="fas fa-credit-card"></i><span>Credit Card</span></label>
+                            <label class="pay-opt" data-m="bank"><input type="radio" name="pay" value="bank"><i class="fas fa-university"></i><span>Bank Transfer</span></label>
+                        </div>
+                        <div id="card-fields" style="display:none">
+                            <div class="form-row full"><div class="fg"><label>Card Number <span class="r">*</span></label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div></div>
+                            <div class="form-row"><div class="fg"><label>Expiry <span class="r">*</span></label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="fg"><label>CVV <span class="r">*</span></label><input type="password" placeholder="•••" maxlength="4"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-card" id="co-summary"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS MODAL -->
+    <div class="overlay" id="success-overlay">
+        <div class="modal">
+            <div class="modal-icon"><i class="fas fa-check"></i></div>
+            <h2>Order Placed!</h2>
+            <p class="oid">Order <strong id="order-id"></strong></p>
+            <p>Thank you for shopping with EverStyle! You'll receive a confirmation email shortly with tracking details.</p>
+            <div class="modal-btns">
+                <a href="index.html" class="p">Continue Shopping</a>
+                <a href="checkout&cart.html#cart-view" class="s" id="modal-close">Close</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand-col">
+                    <h3 class="footer-logo"><i class="fa-solid fa-bag-shopping"></i> EverStyle</h3>
+                    <p>Celebrating Pakistan's textile heritage — where tradition meets contemporary elegance in every thread.</p>
+                    <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a></div>
+                </div>
+                <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Store Locator</a></li></ul></div>
+                <div class="footer-col"><h4>Customer Service</h4><ul><li><a href="#">FAQs</a></li><li><a href="#">Track Order</a></li><li><a href="#">Shipping & Returns</a></li><li><a href="#">Terms</a></li></ul></div>
+                <div class="footer-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i><span>Sky Tower, Dolmen City, Karachi</span></li><li><i class="fas fa-envelope"></i><span>welisten@riwaayat.com</span></li><li><i class="fas fa-phone"></i><span>+92 42 111 542 234</span></li></ul>
+                    <p class="footer-newsletter-text">Subscribe for exclusive offers</p>
+                    <form class="newsletter-form" id="nl-form"><input type="email" placeholder="Your email" required><button type="submit" class="btn">Subscribe</button></form>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Weaves Corporation Limited. All Rights Reserved.</p><div class="footer-pay"><span>100% Safe Checkout</span><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-paypal"></i></div></div>
+        </div>
+    </footer>
+    <button class="back-to-top" id="btt"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="js/products.min.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/script.min.js" defer></script>
+    <script src="js/checkout.js" defer></script>
+</body>
+</html>
