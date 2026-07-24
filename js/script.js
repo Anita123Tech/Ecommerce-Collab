@@ -62,7 +62,7 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
 /* Product card click → open product detail page */
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('click', function(e) {
-    if (e.target.closest('.wishlist-btn')) return;
+    if (e.target.closest('.wishlist-btn') || e.target.closest('.add-cart-btn')) return;
     var cat = this.dataset.cat;
     var idx = this.dataset.idx;
     if (cat) {
