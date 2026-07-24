@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shop premium Pakistani clothing at EverStyle. View product details, sizes, and add to cart.">
+  <title>Product Detail — EverStyle</title>
+
+  <!-- Google Fonts: Poppins (body) + Playfair Display (headings/logo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap"></noscript>
+
+  <!-- Font Awesome 6.5.1 for icons -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <!-- Favicon: shopping bag icon in maroon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23800000' d='M352 160v-32C352 57.42 294.58 0 224 0S96 57.42 96 128v32H0v272c0 44.18 35.82 80 80 80h288c44.18 0 80-35.82 80-80V160h-96zM224 48c44.11 0 80 35.89 80 80v32H144v-32c0-44.11 35.89-80 80-80z'/%3E%3C/svg%3E">
+
+  <!-- Critical inline CSS (prevents FOUC) — mirrors :root vars and header styles from style.css -->
+  <style>
+    :root{--primary:#800000;--primary-dark:#500000;--accent:#FFD700;--white:#FFFFFF;--black:#1A1A1A;--gray-100:#F8F6F4;--gray-200:#E8E4E0;--gray-400:#999490;--text:#2C2A28;--text-light:#7A7672;--footer-bg:#2D2B2A;--shadow-md:0 4px 16px rgba(0,0,0,0.06);--transition:0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);--font-body:'Poppins',sans-serif}
+    *,::after,::before{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:120px}
+    body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
+    .container{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 36px;font-family:var(--font-body);font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:0;cursor:pointer;transition:var(--transition)}
+    .btn-primary{background:var(--primary);color:var(--white)}
+    #loading-overlay{position:fixed;inset:0;background:var(--white);display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity .4s ease}
+    #loading-overlay.hidden{opacity:0;pointer-events:none}
+    .loader{width:36px;height:36px;border:3px solid var(--gray-200);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite}
+    .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white)}
+    .header-top{background:var(--primary);color:var(--white);text-align:center;padding:7px 0;font-size:.68rem;font-weight:400;letter-spacing:.3px}
+    .header-promo{background:#1a1a1a;color:var(--accent);text-align:center;padding:6px 0;font-size:.65rem;font-weight:400;letter-spacing:.5px}
+    .navbar{padding:0;background:var(--white);border-bottom:1px solid var(--gray-200)}
+    .nav-container{display:flex;align-items:center;justify-content:space-between;gap:20px;height:60px}
+    .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;font-style:italic;color:var(--primary);letter-spacing:2px;flex-shrink:0;display:flex;align-items:center;gap:8px}
+    .logo i{font-size:1.3rem;color:var(--primary)}
+    .nav-links{display:flex;align-items:center;gap:0;height:100%}
+    .nav-links>li{position:relative;height:100%}
+    .nav-links>li>a{display:flex;align-items:center;height:100%;padding:0 20px;font-size:.68rem;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--text);transition:color .2s ease;position:relative}
+    .nav-links>li>a::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:2px;background:var(--primary);transform:scaleX(0);transition:transform .25s ease}
+    .nav-links>li>a:hover::after,.nav-links>li>a.active::after{transform:scaleX(1)}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--primary)}
+    .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:var(--white);border:1px solid var(--gray-200);box-shadow:0 12px 40px rgba(0,0,0,.1);opacity:0;visibility:hidden;transition:all .25s ease;padding:28px 32px;min-width:600px;max-width:calc(100vw - 32px);display:flex;gap:40px;z-index:100;pointer-events:none}
+    .nav-links>li:hover .mega-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+    .mega-menu-col{flex:1}.mega-menu-col h4{font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--primary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-200)}
+    .mega-menu-col ul li{margin-bottom:6px}.mega-menu-col ul li a{font-size:.78rem;color:var(--text-light);transition:color .2s ease;display:block;padding:3px 0}
+    .mega-menu-col ul li a:hover{color:var(--primary)}.mega-menu-col ul li a.view-all{color:var(--primary);font-weight:500;font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;margin-top:4px}
+    .nav-icons{display:flex;align-items:center;gap:16px}.nav-icons a{font-size:1rem;color:var(--text);transition:var(--transition);position:relative}.nav-icons a:hover{color:var(--primary)}
+    .cart-icon{position:relative}.cart-count{position:absolute;top:-6px;right:-8px;width:16px;height:16px;background:var(--primary);color:var(--white);font-size:.55rem;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}.hamburger span{width:20px;height:2px;background:var(--text);transition:var(--transition);display:block}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+
+  <!-- Main project stylesheet -->
+  <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
+
+  <!-- Product detail page stylesheet -->
+  <link rel="preload" href="css/product.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/product.css"></noscript>
+</head>
+
+<body data-page="product">
+
+  <!-- ========== LOADING OVERLAY ========== -->
+  <div id="loading-overlay"><div class="loader"></div></div>
+
+  <!-- ========== HEADER (shared across all pages) ========== -->
+  <header class="header" id="header">
+    <!-- Top bar: free shipping notice -->
+    <div class="header-top">
+      <div class="container">
+        <p>Free Shipping on orders over PKR 4,999 | Easy 14-Day Returns</p>
+      </div>
+    </div>
+
+    <!-- Promo banner -->
+    <div class="header-promo">
+      <div class="container">
+        Discover what's new this season — <a href="summer.html">Shop Summer '26</a>
+      </div>
+    </div>
+
+    <!-- Main navigation -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <i class="fa-solid fa-bag-shopping"></i> EverStyle
+        </a>
+
+        <!-- Nav links with mega menu dropdowns -->
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="index.html">New In</a>
+            <div class="mega-menu">
+              <div class="mega-menu-col">
+                <h4>Bridal</h4>
+                <ul>
+                  <li><a href="bridal.html">Lehengas</a></li>
+                  <li><a href="bridal.html">Shararas</a></li>
+                  <li><a href="bridal.html">Ghararas</a></li>
+                  <li><a href="bridal.html">Dupattas</a></li>
+                  <li><a href="bridal.html" class="view-all">View All</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Daily Wear</h4>
+                <ul>
+                  <li><a href="daily.html">Shalwar Kameez</a></li>
+                  <li><a href="daily.html">Kurtas</a></li>
+                  <li><a href="daily.html">3-Piece Suits</a></li>
+                  <li><a href="daily.html">Trouser Suits</a></li>
+                  <li><a href="daily.html" class="view-all">View All</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Summer</h4>
+                <ul>
+                  <li><a href="summer.html">Lawn Suits</a></li>
+                  <li><a href="summer.html">Cotton Suits</a></li>
+                  <li><a href="summer.html">Printed Lawn</a></li>
+                  <li><a href="summer.html">Dupattas</a></li>
+                  <li><a href="summer.html" class="view-all">View All</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Kids</h4>
+                <ul>
+                  <li><a href="kids.html">Boys Shalwar Kameez</a></li>
+                  <li><a href="kids.html">Girls Frocks</a></li>
+                  <li><a href="kids.html">Kids 3-Piece</a></li>
+                  <li><a href="kids.html">Toddler Sets</a></li>
+                  <li><a href="kids.html" class="view-all">View All</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="bridal.html">Bridal</a>
+            <div class="mega-menu">
+              <div class="mega-menu-col">
+                <h4>Lehengas</h4>
+                <ul>
+                  <li><a href="bridal.html">Red Lehengas</a></li>
+                  <li><a href="bridal.html">Gold Lehengas</a></li>
+                  <li><a href="bridal.html">Pastel Lehengas</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Shararas</h4>
+                <ul>
+                  <li><a href="bridal.html">Silk Shararas</a></li>
+                  <li><a href="bridal.html">Organza Shararas</a></li>
+                  <li><a href="bridal.html">Velvet Shararas</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Ghararas</h4>
+                <ul>
+                  <li><a href="bridal.html">Jamawar Ghararas</a></li>
+                  <li><a href="bridal.html">Chiffon Ghararas</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Accessories</h4>
+                <ul>
+                  <li><a href="bridal.html">Bridal Dupattas</a></li>
+                  <li><a href="bridal.html">Chiffon Shawls</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="daily.html">Daily Wear</a>
+            <div class="mega-menu">
+              <div class="mega-menu-col">
+                <h4>Essentials</h4>
+                <ul>
+                  <li><a href="daily.html">1 Piece Kurta</a></li>
+                  <li><a href="daily.html">2 Piece Suit</a></li>
+                  <li><a href="daily.html">3 Piece Suit</a></li>
+                  <li><a href="daily.html">Shalwar Kameez</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Bottoms</h4>
+                <ul>
+                  <li><a href="daily.html">Pants</a></li>
+                  <li><a href="daily.html">Shalwar</a></li>
+                  <li><a href="daily.html">Palazzos</a></li>
+                  <li><a href="daily.html">Trousers</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Fabrics</h4>
+                <ul>
+                  <li><a href="daily.html">Cotton</a></li>
+                  <li><a href="daily.html">Khaddar</a></li>
+                  <li><a href="daily.html">Cambric</a></li>
+                  <li><a href="daily.html">Viscose</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Casuals</h4>
+                <ul>
+                  <li><a href="daily.html">T-Shirts</a></li>
+                  <li><a href="daily.html">Tunics</a></li>
+                  <li><a href="daily.html">Stoles</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="summer.html">Summer Collection</a>
+            <div class="mega-menu">
+              <div class="mega-menu-col">
+                <h4>Essentials</h4>
+                <ul>
+                  <li><a href="summer.html">1 Piece Lawn</a></li>
+                  <li><a href="summer.html">2 Piece Suit</a></li>
+                  <li><a href="summer.html">3 Piece Suit</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Fabrics</h4>
+                <ul>
+                  <li><a href="summer.html">Premium Lawn</a></li>
+                  <li><a href="summer.html">Cotton Dobby</a></li>
+                  <li><a href="summer.html">Chiffon Lawn</a></li>
+                  <li><a href="summer.html">Linen</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Prints</h4>
+                <ul>
+                  <li><a href="summer.html">Digital Print</a></li>
+                  <li><a href="summer.html">Floral Print</a></li>
+                  <li><a href="summer.html">Solid Colors</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="kids.html">Kids</a>
+            <div class="mega-menu">
+              <div class="mega-menu-col">
+                <h4>Boys</h4>
+                <ul>
+                  <li><a href="kids.html">Shalwar Kameez</a></li>
+                  <li><a href="kids.html">Kurta Pajama</a></li>
+                  <li><a href="kids.html">Waistcoat Suit</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Girls</h4>
+                <ul>
+                  <li><a href="kids.html">Embroidered Frocks</a></li>
+                  <li><a href="kids.html">Lehenga Choli</a></li>
+                  <li><a href="kids.html">3-Piece Suits</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-col">
+                <h4>Toddlers</h4>
+                <ul>
+                  <li><a href="kids.html">Baby Frocks</a></li>
+                  <li><a href="kids.html">Toddler Suits</a></li>
+                  <li><a href="kids.html">Cotton Sets</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="sale.html">Sale</a></li>
+        </ul>
+
+        <!-- Right-side icons: search, wishlist, cart, account -->
+        <div class="nav-icons">
+          <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
+          <a href="#" aria-label="Wishlist"><i class="far fa-heart"></i></a>
+          <a href="#" aria-label="Cart" class="cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <a href="#" aria-label="Account" class="account-icon"><i class="far fa-user"></i></a>
+        </div>
+
+        <!-- Mobile hamburger toggle -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== PRODUCT DETAIL SECTION ========== -->
+  <main>
+    <section class="pd-section">
+      <div class="container">
+        <div class="pd-layout">
+
+          <!-- Left column: Image gallery -->
+          <div class="pd-gallery">
+            <!-- Main product image -->
+            <figure class="pd-main-image" id="pd-main-image">
+              <img
+                src="images/bridal-1.webp"
+                alt="Red Embroidered Lehenga"
+                width="600"
+                height="900"
+                id="pd-main-img"
+              >
+            </figure>
+
+            <!-- Clickable thumbnail strip (4 images, populated by JS) -->
+            <div class="pd-thumbnails" id="pd-thumbnails" role="listbox" aria-label="Product images">
+              <button class="pd-thumb active" data-index="0" role="option" aria-selected="true">
+                <img src="images/bridal-1.webp" alt="Front view" width="80" height="120">
+              </button>
+              <button class="pd-thumb" data-index="1" role="option" aria-selected="false">
+                <img src="images/bridal-2.webp" alt="Side view" width="80" height="120">
+              </button>
+              <button class="pd-thumb" data-index="2" role="option" aria-selected="false">
+                <img src="images/bridal-3.webp" alt="Back view" width="80" height="120">
+              </button>
+              <button class="pd-thumb" data-index="3" role="option" aria-selected="false">
+                <img src="images/bridal-4.webp" alt="Detail view" width="80" height="120">
+              </button>
+            </div>
+          </div>
+
+          <!-- Right column: Product info -->
+          <div class="pd-info">
+            <!-- Breadcrumb navigation -->
+            <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+              <a href="index.html">Home</a>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              <a href="bridal.html">Bridal</a>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              <span aria-current="page">Red Embroidered Lehenga</span>
+            </nav>
+
+            <!-- Product title -->
+            <h1 class="pd-title">Red Embroidered Lehenga</h1>
+
+            <!-- Price row: current price, original price (if sale), discount badge -->
+            <div class="pd-price-row">
+              <span class="pd-price" id="pd-price">PKR 45,999</span>
+              <span class="pd-price-original" id="pd-original-price"></span>
+              <span class="pd-badge" id="pd-badge"></span>
+            </div>
+
+            <!-- Star rating display -->
+            <div class="pd-rating" aria-label="Rating: 4.5 out of 5">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+              <span>4.5 (128 reviews)</span>
+            </div>
+
+            <!-- Product description -->
+            <p class="pd-description">
+              Exquisite red bridal lehenga featuring intricate zari embroidery on premium silk.
+              This stunning piece is designed for the modern bride who appreciates traditional
+              craftsmanship with a contemporary touch. Complete with matching dupatta and inner lining.
+            </p>
+
+            <hr class="pd-divider">
+
+            <!-- Color selection (dynamically populated by JS from product.colors) -->
+            <div class="pd-colors">
+              <span class="pd-label">Color</span>
+              <div class="pd-color-options" id="pd-colors" role="radiogroup" aria-label="Select color">
+                <span class="pd-color-dot active" style="background:#CC0000" data-color="#CC0000" role="radio" aria-checked="true" tabindex="0"></span>
+                <span class="pd-color-dot" style="background:#8B0000" data-color="#8B0000" role="radio" aria-checked="false" tabindex="-1"></span>
+                <span class="pd-color-dot" style="background:#DAA520" data-color="#DAA520" role="radio" aria-checked="false" tabindex="-1"></span>
+              </div>
+            </div>
+
+            <!-- Size selection: S / M / L / XL -->
+            <div class="pd-sizes" id="pd-sizes">
+              <span class="pd-label">Size</span>
+              <div class="pd-size-options" role="radiogroup" aria-label="Select size">
+                <button class="pd-size-btn" data-size="S" role="radio" aria-checked="false">S</button>
+                <button class="pd-size-btn active" data-size="M" role="radio" aria-checked="true">M</button>
+                <button class="pd-size-btn" data-size="L" role="radio" aria-checked="false">L</button>
+                <button class="pd-size-btn" data-size="XL" role="radio" aria-checked="false">XL</button>
+              </div>
+              <a href="#" class="pd-size-guide">
+                <i class="fas fa-ruler" aria-hidden="true"></i> Size Guide
+              </a>
+            </div>
+
+            <!-- Quantity selector: minus / value / plus -->
+            <div class="pd-qty-row">
+              <span class="pd-label">Quantity</span>
+              <div class="pd-qty-selector">
+                <button class="pd-qty-btn" id="pd-qty-minus" aria-label="Decrease quantity">
+                  <i class="fas fa-minus" aria-hidden="true"></i>
+                </button>
+                <span class="pd-qty-value" id="pd-qty-value" aria-live="polite">1</span>
+                <button class="pd-qty-btn" id="pd-qty-plus" aria-label="Increase quantity">
+                  <i class="fas fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Action buttons: Add to Cart + Wishlist -->
+            <div class="pd-actions">
+              <button class="btn btn-primary pd-add-to-cart" id="pd-add-to-cart" type="button">
+                <i class="fas fa-shopping-bag" aria-hidden="true"></i> Add to Cart
+              </button>
+              <button class="pd-wishlist-btn" id="pd-wishlist-btn" type="button" aria-label="Add to wishlist">
+                <i class="far fa-heart" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <!-- Trust / meta information -->
+            <div class="pd-meta">
+              <div class="pd-meta-item">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                <div>
+                  <strong>Free Shipping</strong>
+                  <span>On orders over PKR 4,999</span>
+                </div>
+              </div>
+              <div class="pd-meta-item">
+                <i class="fas fa-undo" aria-hidden="true"></i>
+                <div>
+                  <strong>Easy Returns</strong>
+                  <span>14-day return policy</span>
+                </div>
+              </div>
+              <div class="pd-meta-item">
+                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                <div>
+                  <strong>Secure Payment</strong>
+                  <span>100% secure checkout</span>
+                </div>
+              </div>
+            </div>
+
+            <hr class="pd-divider">
+
+            <!-- Product details table -->
+            <section class="pd-details" aria-label="Product information">
+              <h2 class="pd-details-title">Product Details</h2>
+              <ul class="pd-details-list">
+                <li><span>Fabric</span><span id="pd-fabric">Silk | Zari Work</span></li>
+                <li><span>Category</span><span>Bridal</span></li>
+                <li><span>Season</span><span>All Season</span></li>
+                <li><span>Care</span><span>Dry Clean Only</span></li>
+                <li><span>Delivery</span><span>5-7 Business Days</span></li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RECOMMENDED PRODUCTS SECTION ========== -->
+    <section class="section pd-recommended" aria-label="Recommended products">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">You May Also Like</span>
+          <h2 class="section-title">Recommended For You</h2>
+          <p class="pd-section-desc">Complete your look with these handpicked selections</p>
+        </div>
+        <!-- Rendered by product.js -->
+        <div class="product-grid" id="pd-recommended-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER (shared across all pages) ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand column -->
+        <div class="footer-col">
+          <h3 class="footer-logo">
+            <i class="fa-solid fa-bag-shopping"></i> EverStyle
+          </h3>
+          <p>Celebrating Pakistan's textile heritage — where tradition meets contemporary elegance in every thread.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Help links -->
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <!-- More from brand -->
+        <div class="footer-col">
+          <h4>More From EverStyle</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Cloth Care</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul class="contact-info">
+            <li><i class="fas fa-map-marker-alt"></i> 22nd Floor, Sky Tower, Dolmen City, Karachi</li>
+            <li><i class="fas fa-envelope"></i> welisten@riwaayat.com</li>
+            <li><i class="fas fa-phone"></i> +92 42 111 542 234</li>
+          </ul>
+        </div>
+
+        <!-- Newsletter signup -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Get the latest news and updates</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Email Address" required>
+            <button type="submit" class="btn">Confirm</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer bottom: copyright + payment icons -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Weaves Corporation Limited. All Rights Reserved.</p>
+        <div class="payment-methods">
+          <span>100% Safe Checkout</span>
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Product data (shared across all pages) -->
+  <script src="js/products.min.js" defer></script>
+  <!-- Main site logic: carousel, hamburger, fade-in, newsletter, countdown -->
+  <script src="js/script.min.js" defer></script>
+  <!-- Product detail page logic: gallery, sizes, qty, recommendations -->
+  <script src="js/product.js" defer></script>
+</body>
+</html>
