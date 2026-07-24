@@ -460,6 +460,7 @@
     const btn = e.target.closest('.add-cart-btn');
     if (!btn) return;
     e.preventDefault();
+    e.stopPropagation();
     const card = btn.closest('.product-card');
     if (!card) return;
     const found = findProductFromCard(card);
@@ -473,6 +474,7 @@
   document.addEventListener('click', function (e) {
     if (e.target.closest('.cart-icon')) {
       e.preventDefault();
+      e.stopPropagation();
       window.location.href = 'checkout&cart.html#cart-view';
     }
   });
