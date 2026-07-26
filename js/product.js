@@ -399,11 +399,51 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.querySelectorAll('.product-card').forEach(function (card) {
       card.addEventListener('click', function (e) {
         if (e.target.closest('.wishlist-btn')) return;
+        if (e.target.closest('.add-cart-btn')) return;
         var cat = this.dataset.cat;
         var idx = this.dataset.idx;
         if (cat) {
           window.location.href = 'product.html?cat=' + cat + '&idx=' + idx;
         }
+      });
+    });
+
+    // Wire up Add to Cart for recommended cards
+    grid.querySelectorAll('.add-cart-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var card = this.closest('.product-card');
+        if (!card) return;
+        var cat = card.dataset.cat;
+        var idx = parseInt(card.dataset.idx) || 0;
+        var p = allProducts[cat] ? allProducts[cat][idx] : null;
+        if (!p) return;
+
+        var cartItem = {
+          name: p.name,
+          price: p.price,
+          image: p.image,
+          size: 'M',
+          color: p.colors && p.colors[0] ? p.colors[0] : '',
+          qty: 1,
+          options: [],
+          optionsPrice: 0,
+          totalPrice: p.price
+        };
+
+        var cart = getCart();
+        cart.push(cartItem);
+        saveCart(cart);
+        updateCartBadge();
+
+        var orig = this.textContent;
+        this.textContent = 'Added!';
+        this.style.background = '#2d7a3a';
+        var self = this;
+        setTimeout(function () {
+          self.textContent = orig;
+          self.style.background = '';
+        }, 1500);
       });
     });
   }
