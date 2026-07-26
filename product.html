@@ -58,8 +58,8 @@
   </style>
 
   <!-- Main project stylesheet -->
-  <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 
   <!-- Product detail page stylesheet -->
   <link rel="preload" href="css/product.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -282,7 +282,7 @@
         <div class="nav-icons">
           <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
           <a href="#" aria-label="Wishlist"><i class="far fa-heart"></i></a>
-          <a href="#" aria-label="Cart" class="cart-icon">
+          <a href="cart.html" aria-label="Cart" class="cart-icon">
             <i class="fas fa-shopping-bag"></i>
             <span class="cart-count">0</span>
           </a>
@@ -411,6 +411,45 @@
               </div>
             </div>
 
+            <!-- Checklist options -->
+            <div class="pd-checklist" id="pd-checklist">
+              <span class="pd-label">Additional Options</span>
+              <label class="pd-check-item">
+                <input type="checkbox" class="pd-checkbox" value="gift-wrap">
+                <span class="pd-checkmark"></span>
+                <span class="pd-check-text">
+                  <i class="fas fa-gift" aria-hidden="true"></i>
+                  Gift Wrapping
+                  <small>+PKR 200</small>
+                </span>
+              </label>
+              <label class="pd-check-item">
+                <input type="checkbox" class="pd-checkbox" value="express">
+                <span class="pd-checkmark"></span>
+                <span class="pd-check-text">
+                  <i class="fas fa-shipping-fast" aria-hidden="true"></i>
+                  Express Delivery (1-2 Days)
+                  <small>+PKR 350</small>
+                </span>
+              </label>
+              <label class="pd-check-item">
+                <input type="checkbox" class="pd-checkbox" value="gift-receipt">
+                <span class="pd-checkmark"></span>
+                <span class="pd-check-text">
+                  <i class="fas fa-receipt" aria-hidden="true"></i>
+                  Include Gift Receipt
+                </span>
+              </label>
+              <label class="pd-check-item">
+                <input type="checkbox" class="pd-checkbox" value="message">
+                <span class="pd-checkmark"></span>
+                <span class="pd-check-text">
+                  <i class="fas fa-pen" aria-hidden="true"></i>
+                  Add Personalized Message
+                </span>
+              </label>
+            </div>
+
             <!-- Action buttons: Add to Cart + Wishlist -->
             <div class="pd-actions">
               <button class="btn btn-primary pd-add-to-cart" id="pd-add-to-cart" type="button">
@@ -420,6 +459,11 @@
                 <i class="far fa-heart" aria-hidden="true"></i>
               </button>
             </div>
+
+            <!-- Continue Shopping link -->
+            <a href="#" class="pd-continue-link" id="pd-continue-link">
+              <i class="fas fa-arrow-left" aria-hidden="true"></i> Continue Shopping
+            </a>
 
             <!-- Trust / meta information -->
             <div class="pd-meta">

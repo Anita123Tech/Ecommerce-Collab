@@ -59,6 +59,61 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
   });
 });
 
+/* Load cart count from localStorage */
+function loadCartCount() {
+  try {
+    var cart = JSON.parse(localStorage.getItem('everstyle-cart')) || [];
+    var total = cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
+    var el = document.querySelector('.cart-count');
+    if (el) el.textContent = total;
+  } catch (e) {}
+}
+loadCartCount();
+
+/* Product card "Add to Cart" button handler */
+document.querySelectorAll('.add-cart-btn').forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var card = this.closest('.product-card');
+    if (!card) return;
+    var cat = card.dataset.cat;
+    var idx = parseInt(card.dataset.idx) || 0;
+    var p = products[cat] ? products[cat][idx] : null;
+    if (!p) return;
+
+    var cartItem = {
+      name: p.name,
+      price: p.price,
+      image: p.image,
+      size: 'M',
+      color: p.colors && p.colors[0] ? p.colors[0] : '',
+      qty: 1,
+      options: [],
+      optionsPrice: 0,
+      totalPrice: p.price
+    };
+
+    var cart;
+    try { cart = JSON.parse(localStorage.getItem('everstyle-cart')) || []; }
+    catch (e) { cart = []; }
+    cart.push(cartItem);
+    localStorage.setItem('everstyle-cart', JSON.stringify(cart));
+
+    var total = cart.reduce(function (s, i) { return s + i.qty; }, 0);
+    var countEl = document.querySelector('.cart-count');
+    if (countEl) countEl.textContent = total;
+
+    var orig = this.textContent;
+    this.textContent = 'Added!';
+    this.style.background = '#2d7a3a';
+    var self = this;
+    setTimeout(function () {
+      self.textContent = orig;
+      self.style.background = '';
+    }, 1500);
+  });
+});
+
 /* Product card click → open product detail page */
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('click', function(e) {

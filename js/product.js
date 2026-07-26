@@ -141,6 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Update page title
   document.title = product.name + ' — EverStyle';
 
+  // Continue Shopping link
+  var continueLink = document.getElementById('pd-continue-link');
+  if (continueLink) {
+    continueLink.href = category + '.html';
+  }
+
   /* ==========================================================
      9. THUMBNAIL CLICK → SWAP MAIN IMAGE
      Uses opacity fade for smooth transition.
@@ -226,26 +232,74 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ==========================================================
-     13. ADD TO CART BUTTON (UI ONLY)
-     Shows "Added to Cart" confirmation for 2 seconds.
-     Increments the nav cart-count badge.
-     Designed to be replaceable by the cart teammate's logic.
+     13. ADD TO CART + CHECKLIST + localStorage
+     Collects selected size, color, quantity, and checklist options.
+     Persists cart data in localStorage.
      ========================================================== */
+  var checklistPrices = { 'gift-wrap': 200, 'express': 350 };
+
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem('everstyle-cart')) || []; }
+    catch (e) { return []; }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('everstyle-cart', JSON.stringify(cart));
+  }
+
+  function updateCartBadge() {
+    var cartCount = document.querySelector('.cart-count');
+    if (!cartCount) return;
+    var cart = getCart();
+    var total = cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
+    cartCount.textContent = total;
+  }
+
+  updateCartBadge();
+
   document.getElementById('pd-add-to-cart').addEventListener('click', function () {
     var btn = this;
     var originalHTML = btn.innerHTML;
+
+    // Gather selected size
+    var activeSize = document.querySelector('.pd-size-btn.active');
+    var selectedSize = activeSize ? activeSize.dataset.size : 'M';
+
+    // Gather selected color
+    var activeColor = document.querySelector('.pd-color-dot.active');
+    var selectedColor = activeColor ? activeColor.dataset.color : '';
+
+    // Gather checklist options
+    var checkedBoxes = document.querySelectorAll('#pd-checklist .pd-checkbox:checked');
+    var options = [];
+    var optionsPrice = 0;
+    checkedBoxes.forEach(function (cb) {
+      options.push(cb.value);
+      if (checklistPrices[cb.value]) optionsPrice += checklistPrices[cb.value];
+    });
+
+    // Build cart item
+    var cartItem = {
+      name: product.name,
+      price: product.price,
+      image: galleryImages[0],
+      size: selectedSize,
+      color: selectedColor,
+      qty: qty,
+      options: options,
+      optionsPrice: optionsPrice,
+      totalPrice: product.price + optionsPrice
+    };
+
+    var cart = getCart();
+    cart.push(cartItem);
+    saveCart(cart);
+    updateCartBadge();
 
     // Show confirmation
     btn.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
     btn.style.background = '#2d7a3a';
 
-    // Update cart badge count in nav
-    var cartCount = document.querySelector('.cart-count');
-    if (cartCount) {
-      cartCount.textContent = parseInt(cartCount.textContent) + qty;
-    }
-
-    // Reset button after 2 seconds
     setTimeout(function () {
       btn.innerHTML = originalHTML;
       btn.style.background = '';
@@ -345,11 +399,51 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.querySelectorAll('.product-card').forEach(function (card) {
       card.addEventListener('click', function (e) {
         if (e.target.closest('.wishlist-btn')) return;
+        if (e.target.closest('.add-cart-btn')) return;
         var cat = this.dataset.cat;
         var idx = this.dataset.idx;
         if (cat) {
           window.location.href = 'product.html?cat=' + cat + '&idx=' + idx;
         }
+      });
+    });
+
+    // Wire up Add to Cart for recommended cards
+    grid.querySelectorAll('.add-cart-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var card = this.closest('.product-card');
+        if (!card) return;
+        var cat = card.dataset.cat;
+        var idx = parseInt(card.dataset.idx) || 0;
+        var p = allProducts[cat] ? allProducts[cat][idx] : null;
+        if (!p) return;
+
+        var cartItem = {
+          name: p.name,
+          price: p.price,
+          image: p.image,
+          size: 'M',
+          color: p.colors && p.colors[0] ? p.colors[0] : '',
+          qty: 1,
+          options: [],
+          optionsPrice: 0,
+          totalPrice: p.price
+        };
+
+        var cart = getCart();
+        cart.push(cartItem);
+        saveCart(cart);
+        updateCartBadge();
+
+        var orig = this.textContent;
+        this.textContent = 'Added!';
+        this.style.background = '#2d7a3a';
+        var self = this;
+        setTimeout(function () {
+          self.textContent = orig;
+          self.style.background = '';
+        }, 1500);
       });
     });
   }
