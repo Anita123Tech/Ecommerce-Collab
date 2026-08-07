@@ -239,12 +239,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var checklistPrices = { 'gift-wrap': 200, 'express': 350 };
 
   function getCart() {
-    try { return JSON.parse(localStorage.getItem('everstyle-cart')) || []; }
+    try { return JSON.parse(localStorage.getItem('everstyle_cart')) || []; }
     catch (e) { return []; }
   }
 
   function saveCart(cart) {
-    localStorage.setItem('everstyle-cart', JSON.stringify(cart));
+    localStorage.setItem('everstyle_cart', JSON.stringify(cart));
   }
 
   function updateCartBadge() {
@@ -280,11 +280,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Build cart item
     var cartItem = {
+      key: category + '-' + index + '-' + (selectedColor || ''),
       name: product.name,
+      fabric: product.fabric,
       price: product.price,
+      originalPrice: product.originalPrice || null,
       image: galleryImages[0],
-      size: selectedSize,
       color: selectedColor,
+      category: category,
+      index: index,
+      size: selectedSize,
       qty: qty,
       options: options,
       optionsPrice: optionsPrice,
@@ -420,11 +425,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!p) return;
 
         var cartItem = {
+          key: cat + '-' + idx + '-' + (p.colors && p.colors[0] ? p.colors[0] : ''),
           name: p.name,
+          fabric: p.fabric,
           price: p.price,
+          originalPrice: p.originalPrice || null,
           image: p.image,
-          size: 'M',
           color: p.colors && p.colors[0] ? p.colors[0] : '',
+          category: cat,
+          index: idx,
+          size: 'M',
           qty: 1,
           options: [],
           optionsPrice: 0,

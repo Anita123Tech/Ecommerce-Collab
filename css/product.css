@@ -6,8 +6,7 @@
 
 /* ---- Page-level spacing (offset for fixed header) ---- */
 .pd-section {
-  margin-top: 108px;
-  padding: 48px 0 40px;
+  padding: 20px 0 40px;
 }
 
 /* ---- Two-column layout: gallery | info ---- */
@@ -641,8 +640,7 @@
    ========================================================== */
 @media (max-width: 768px) {
   .pd-section {
-    margin-top: 106px;
-    padding: 28px 0 24px;
+    padding: 14px 0 24px;
   }
 
   /* Stack gallery on top, info below */
@@ -721,8 +719,7 @@
    ========================================================== */
 @media (max-width: 480px) {
   .pd-section {
-    margin-top: 86px;
-    padding: 20px 0 16px;
+    padding: 12px 0 16px;
   }
 
   .pd-title {
@@ -832,8 +829,7 @@
    ========================================================== */
 @media (max-width: 360px) {
   .pd-section {
-    margin-top: 86px;
-    padding: 16px 0 12px;
+    padding: 10px 0 12px;
   }
 
   .pd-layout {

@@ -62,7 +62,7 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
 /* Load cart count from localStorage */
 function loadCartCount() {
   try {
-    var cart = JSON.parse(localStorage.getItem('everstyle-cart')) || [];
+    var cart = JSON.parse(localStorage.getItem('everstyle_cart')) || [];
     var total = cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
     var el = document.querySelector('.cart-count');
     if (el) el.textContent = total;
@@ -94,10 +94,10 @@ document.querySelectorAll('.add-cart-btn').forEach(function (btn) {
     };
 
     var cart;
-    try { cart = JSON.parse(localStorage.getItem('everstyle-cart')) || []; }
+    try { cart = JSON.parse(localStorage.getItem('everstyle_cart')) || []; }
     catch (e) { cart = []; }
     cart.push(cartItem);
-    localStorage.setItem('everstyle-cart', JSON.stringify(cart));
+    localStorage.setItem('everstyle_cart', JSON.stringify(cart));
 
     var total = cart.reduce(function (s, i) { return s + i.qty; }, 0);
     var countEl = document.querySelector('.cart-count');
